@@ -18,22 +18,22 @@ char* GetString(int *len) {
         // если реальный размер больше размера контейнера, то увеличим его размер
         if (*len >= capacity) {
             capacity *= 2; // увеличиваем ёмкость строки в два раза
-            s = (char*) realloc(s, capacity * sizeof(char)); // создаём новую строку с увеличенной ёмкостью  
+            s = (char*) realloc(s, capacity * sizeof(char)); // создаём новую строку с увеличенной ёмкостью
         }
 
-        c = getchar(); // считываем следующий символ          
+        c = getchar(); // считываем следующий символ
     }
 
     s[*len] = '\0'; // завершаем строку символом конца строки
     return s;
 }
 
-void PrintMatrix(int ** matrix, int size_x, int size_y){
+void PrintMatrix(int** matrix, int size_x, int size_y){
     for(int i = 0; i < size_x; i++){
-        for(int j = 0; j < size_y - 1; j++){
-            printf("%d, ", matrix[i][j]);
+        for(int j = 0; j < size_y; j++){
+            printf("%d ", matrix[i][j]);
         }
-        printf("%d\n", matrix[i][-1]);
+        printf("\n");
     }
 }
 
@@ -46,7 +46,7 @@ int** CreateMatrix(int a, int b){
 }
 
 int InputMatrix(int** matrix, int size_x, int size_y){
-    printf("Please enter a %d:%d matrix", size_x, size_y);
+    printf("Please enter a %d:%d matrix\n", size_x, size_y);
     for(int i = 0; i < size_x; i++){
         printf("%d string: ", i + 1);
         int num;
@@ -84,8 +84,8 @@ void InputSize(int* size){
         printf("Please, enter y-size: ");
         InputNumber(&y_size);
     }
-    size[0] = x_size;
-    size[1] = y_size;
+    size[1] = x_size;
+    size[0] = y_size;
 }
 
 int main() {
@@ -99,6 +99,9 @@ int main() {
     int res = InputMatrix(matrix, size[0], size[1]);
     if(res){
         PrintMatrix(matrix, size[0], size[1]);
+    }
+    else{
+        printf("Incorrect input. Matrix should consist only of numbers\n");
     }
     for(int i = 0; i < size[0]; i++){
         free(matrix[i]);
