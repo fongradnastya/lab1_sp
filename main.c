@@ -37,6 +37,45 @@ void PrintMatrix(int** matrix, int size_x, int size_y){
     }
 }
 
+void CountModuleSum(int** matrix, int size_x, int size_y, int* sum){
+    for(int i = 0; i < size_x; i++){
+        sum[i] = 0;
+        for(int j = 0; j < size_y; j++){
+            sum[i] += abs(matrix[i][j]);
+        }
+    }
+}
+
+void FindMaxId(int* array, int length, int* ids){
+    for(int i = 0; i < length; i++){
+        int max = 0;
+        int id = 0;
+        for(int j = 0; j < length; j++){
+            if(array[j] > max){
+                max = array[j];
+                id = j;
+            }
+        }
+        ids[i] = id;
+        array[id] = 0;
+    }
+}
+
+void CreateNewMatrix(int** matrix, int** new_matrix, int size_x, int size_y){
+    int sum[size_x];
+    CountModuleSum(matrix, size_x, size_y, sum);
+    printf("Modules summs: ");
+    for(int i = 0; i < size_x; i++){
+        printf("%d ", sum[i]);
+    }
+    printf("\n");
+    int ids[size_x];
+    FindMaxId(sum, size_x, ids);
+    for(int i = 0; i < size_x; i++){
+        new_matrix[i] = matrix[ids[i]];
+    }
+}
+
 int** CreateMatrix(int a, int b){
     int** matrix = (int**) malloc(a * sizeof(int*));
     for(int i = 0; i < a; i++){
@@ -64,7 +103,6 @@ int InputMatrix(int** matrix, int size_x, int size_y){
 int InputNumber(int* val){
     int len;
     char* str = GetString(&len);
-    printf("Str %s\n", str);
     for(int i = 0; i < strlen(str); i++)
     {
         if (!isdigit(str[i]) && !(i == 0 && str[0] == '-')) return 0;
@@ -98,7 +136,16 @@ int main() {
     }
     int res = InputMatrix(matrix, size[0], size[1]);
     if(res){
+        printf("Your matrix\n");
         PrintMatrix(matrix, size[0], size[1]);
+        int** new_matrix = (int**) malloc(size[0] * sizeof(int*));
+        for(int i = 0; i < size[0]; i++){
+            new_matrix[i] = (int*)malloc(size[1] * sizeof(int));
+        }
+        CreateNewMatrix(matrix, new_matrix, size[0], size[1]);
+        printf("New matrix\n");
+        PrintMatrix(new_matrix, size[0], size[1]);
+
     }
     else{
         printf("Incorrect input. Matrix should consist only of numbers\n");
