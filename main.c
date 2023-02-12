@@ -8,7 +8,7 @@
 #include <unistd.h>
 
 
-int spawn(char* program, char** argList)
+int spawn(char* program, char* argList[])
 {
   pid_t childPid;
 
@@ -22,10 +22,10 @@ int spawn(char* program, char** argList)
   else
   {
     /* Now execute PROGRAM, searching for it in the path. */
-    execve(program, argList, NULL);
+    execv(program, argList);
 
     /* The execvp function returns only if an error occurs.  */
-    fprintf(stderr, "an error occurred in execvp\n");
+    fprintf(stderr, "an error occurred in execv\n");
     abort();
   }
 }
@@ -39,7 +39,7 @@ int main()
 
   /* Spawn a child process running the "ls" command.  Ignore the
      returned child process id.  */
-  spawn("chaild", argList);
+  spawn("./child", argList);
 
   /* Wait for child process  */
   wait(&childStatus);

@@ -126,7 +126,7 @@ void InputSize(int* size){
     size[0] = y_size;
 }
 
-int main(int argc, char *argv[], char *envp[]) {
+int main(int argc, char* argv[]) {
     int size [] = {0, 0};
     InputSize(size);
     printf("Answer %d %d\n", size[0], size[1]);
