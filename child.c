@@ -3,7 +3,11 @@
 #include<string.h>
 #include<ctype.h>
 
-
+/*!
+Считывает строку произвольной длины из коноли
+\param[out] len полученная длина строки
+\return считанная из консоли строка
+*/
 char* GetString(int *len) {
     *len = 0; // изначально строка пуста
     int capacity = 1; // ёмкость контейнера динамической строки (1, так как точно будет '\0')
@@ -27,7 +31,12 @@ char* GetString(int *len) {
     s[*len] = '\0'; // завершаем строку символом конца строки
     return s;
 }
-
+/*!
+Вывод матрицы в консоль
+\param[in] matrix матрица для вывода
+\param[in] size_x ширина матрицы
+\param[in] size_y высота матрицы
+*/
 void PrintMatrix(int** matrix, int size_x, int size_y){
     for(int i = 0; i < size_x; i++){
         for(int j = 0; j < size_y; j++){
@@ -37,6 +46,13 @@ void PrintMatrix(int** matrix, int size_x, int size_y){
     }
 }
 
+/*!
+Вычисляет суммы модулей элементов для каждой строки
+\param[in] matrix исходная матрица
+\param[in] size_x ширина матрицы
+\param[in] size_y высота матрицы
+\param[out] sum вычисленные суммы модулей
+*/
 void CountModuleSum(int** matrix, int size_x, int size_y, int* sum){
     for(int i = 0; i < size_x; i++){
         sum[i] = 0;
@@ -46,6 +62,13 @@ void CountModuleSum(int** matrix, int size_x, int size_y, int* sum){
     }
 }
 
+/*!
+Вычисляет последовательность индексов строк, 
+располагающую строки в порядке убывания
+\param[in] array массив сумм элементов строк
+\param[in] length длина исходного массива
+\param[out] ids вычисленный массив индексов 
+*/
 void FindMaxId(int* array, int length, int* ids){
     for(int i = 0; i < length; i++){
         int max = 0;
@@ -61,6 +84,14 @@ void FindMaxId(int* array, int length, int* ids){
     }
 }
 
+/*!
+Заполняет строки новой матрицы в порядке 
+убывания суммы модулей их элементов
+\param[in] matrix исходная матрица
+\param[out] new_matrix новая матрица
+\param[in] size_x ширина матрицы
+\param[in] size_y высота матрицы
+*/
 void CreateNewMatrix(int** matrix, int** new_matrix, int size_x, int size_y){
     int sum[size_x];
     CountModuleSum(matrix, size_x, size_y, sum);
@@ -76,14 +107,13 @@ void CreateNewMatrix(int** matrix, int** new_matrix, int size_x, int size_y){
     }
 }
 
-int** CreateMatrix(int a, int b){
-    int** matrix = (int**) malloc(a * sizeof(int*));
-    for(int i = 0; i < a; i++){
-        matrix[i] = (int*)malloc(b * sizeof(int));
-    }
-    return matrix;
-}
-
+/*!
+Считывает из консоли значения элементов матрицы
+\param[out] matrix матрица считанных значений
+\param[in] size_x ширина матрицы
+\param[in] size_y высота матрицы
+\return корректно ли прошло считывание
+*/
 int InputMatrix(int** matrix, int size_x, int size_y){
     printf("Please enter a %d:%d matrix\n", size_x, size_y);
     for(int i = 0; i < size_x; i++){
@@ -100,6 +130,11 @@ int InputMatrix(int** matrix, int size_x, int size_y){
     return 1;
 }
 
+/*!
+Считывает из консоли одно целое число
+\param[out] val считанное значение
+\return код корректности считывания
+*/
 int InputNumber(int* val){
     int len;
     char* str = GetString(&len);
@@ -111,39 +146,52 @@ int InputNumber(int* val){
     return 1;
 }
 
+/*!
+Запрашивает у пользователя размер будущей матрицы
+\param[out] size считанный размер матрицы
+*/
 void InputSize(int* size){
     int x_size = 0;
     while(x_size < 1) {
-        printf("Please, enter x-size: ");
-        InputNumber(&x_size);
+        printf("Please, enter x matrix size: ");
+        int res = InputNumber(&x_size);
+        if(res == 0) printf("Incorrect number format. Please, try again.\n");
+        else if(x_size < 1) printf("Size should be positive\n");
     }
     int y_size = 0;
     while(y_size < 1) {
-        printf("Please, enter y-size: ");
-        InputNumber(&y_size);
+        printf("Please, enter y matrix size: ");
+        int res = InputNumber(&y_size);
+        if(res == 0) printf("Incorrect number format. Please, try again.\n");
+        else if(x_size < 1) printf("Size should be positive\n");
     }
     size[1] = x_size;
     size[0] = y_size;
 }
 
+/*!
+Запускает исполнение оновного функционала программы
+\param[in] argc передаваемый числовой код
+\param[in] argv[] массив параметров коммандной строки
+\return код завершения программы
+*/ 
 int main(int argc, char* argv[]) {
     int size [] = {0, 0};
     InputSize(size);
-    printf("Answer %d %d\n", size[0], size[1]);
     int** matrix = (int**) malloc(size[0] * sizeof(int*));
     for(int i = 0; i < size[0]; i++){
         matrix[i] = (int*)malloc(size[1] * sizeof(int));
     }
     int res = InputMatrix(matrix, size[0], size[1]);
     if(res){
-        printf("Your matrix\n");
+        printf("Your matrix:\n");
         PrintMatrix(matrix, size[0], size[1]);
         int** new_matrix = (int**) malloc(size[0] * sizeof(int*));
         for(int i = 0; i < size[0]; i++){
             new_matrix[i] = (int*)malloc(size[1] * sizeof(int));
         }
         CreateNewMatrix(matrix, new_matrix, size[0], size[1]);
-        printf("New matrix\n");
+        printf("New matrix:\n");
         PrintMatrix(new_matrix, size[0], size[1]);
 
     }

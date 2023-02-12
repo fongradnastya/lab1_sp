@@ -1,13 +1,16 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<string.h>
-#include<ctype.h>
 #include <sys/types.h>
 #include <signal.h>
 #include <sys/wait.h>
 #include <unistd.h>
 
-
+/*!
+Создаёт новый дочерний поток методом fork-and-exec
+\param[in] program программа для запуска в дочернем потоке
+\param[in] argList[] список аргументов для запуска
+\retun pid дочернего процесса
+*/
 int spawn(char* program, char* argList[])
 {
   pid_t childPid;
@@ -30,15 +33,21 @@ int spawn(char* program, char* argList[])
   }
 }
 
+/*!
+Запускает основной процесс программы
+\return код завершения программы
+*/
 int main()
 {
   int childStatus;
   
-  /* The argument list to pass to the "ls" command.  */
+  printf("------------------------------------------------------------------\n");
+  printf("This program is workind with matrix and chainging its string order\n");
+  printf("------------------------------------------------------------------\n");
+  /* The argument list*/
   char* argList[] = {};
 
-  /* Spawn a child process running the "ls" command.  Ignore the
-     returned child process id.  */
+  /* Spawn a child process mmand. Ignore the returned child process id.  */
   spawn("./child", argList);
 
   /* Wait for child process  */
