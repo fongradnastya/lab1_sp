@@ -1,0 +1,213 @@
+\hypertarget{child_8h}{}\doxysection{untitled3/lab1\+\_\+sp/child.h File Reference}
+\label{child_8h}\index{untitled3/lab1\_sp/child.h@{untitled3/lab1\_sp/child.h}}
+
+
+Заголовочный файл с описанием функций  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \mbox{\hyperlink{child_8h_a2f0dc1a3a812553bec9ad9683b8ef484}{Get\+String}} (int $\ast$len)
+\begin{DoxyCompactList}\small\item\em Считывает строку произвольной длины из коноли \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{child_8h_a87c58e25ad45017b58da2168adb27103}{Print\+Matrix}} (int $\ast$$\ast$matrix, int size\+\_\+x, int size\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Вывод матрицы в консоль \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{child_8h_af50d19bcf7f3a7a17d322f512e945570}{Count\+Module\+Sum}} (int $\ast$$\ast$matrix, int size\+\_\+x, int size\+\_\+y, int $\ast$sum)
+\begin{DoxyCompactList}\small\item\em Вычисляет суммы модулей элементов для каждой строки \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{child_8h_afed89349e80f141b95df2dd60e0c2192}{Find\+Max\+Id}} (int $\ast$array, int length, int $\ast$ids)
+\begin{DoxyCompactList}\small\item\em Вычисляет последовательность индексов строк, располагающую строки в порядке убывания \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{child_8h_a1d2c4b11f813747967698d85dd96761c}{Create\+New\+Matrix}} (int $\ast$$\ast$matrix, int $\ast$$\ast$new\+\_\+matrix, int size\+\_\+x, int size\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Заполняет строки новой матрицы в порядке убывания суммы модулей их элементов \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{child_8h_a3a980838f6009ee9255fd9e3226a02fc}{Input\+Matrix}} (int $\ast$$\ast$matrix, int size\+\_\+x, int size\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Считывает из консоли значения элементов матрицы \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{child_8h_a371b86d84af3868680310b814412466f}{Input\+Number}} (int $\ast$val)
+\begin{DoxyCompactList}\small\item\em Считывает из консоли одно целое число \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{child_8h_a0f22c8d8fba0326f6d57ae19515f1e94}{Input\+Size}} (int $\ast$size)
+\begin{DoxyCompactList}\small\item\em Запрашивает у пользователя размер будущей матрицы \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{child_8h_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Запускает исполнение оновного функционала программы \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Заголовочный файл с описанием функций 
+
+Данный файл содержит в себе определения основных функций, используемых в программе 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{child_8h_af50d19bcf7f3a7a17d322f512e945570}\label{child_8h_af50d19bcf7f3a7a17d322f512e945570}} 
+\index{child.h@{child.h}!CountModuleSum@{CountModuleSum}}
+\index{CountModuleSum@{CountModuleSum}!child.h@{child.h}}
+\doxysubsubsection{\texorpdfstring{CountModuleSum()}{CountModuleSum()}}
+{\footnotesize\ttfamily void Count\+Module\+Sum (\begin{DoxyParamCaption}\item[{int $\ast$$\ast$}]{matrix,  }\item[{int}]{size\+\_\+x,  }\item[{int}]{size\+\_\+y,  }\item[{int $\ast$}]{sum }\end{DoxyParamCaption})}
+
+
+
+Вычисляет суммы модулей элементов для каждой строки 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em matrix} & исходная матрица \\
+\hline
+\mbox{\texttt{ in}}  & {\em size\+\_\+x} & ширина матрицы \\
+\hline
+\mbox{\texttt{ in}}  & {\em size\+\_\+y} & высота матрицы \\
+\hline
+\mbox{\texttt{ out}}  & {\em sum} & вычисленные суммы модулей \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{child_8h_a1d2c4b11f813747967698d85dd96761c}\label{child_8h_a1d2c4b11f813747967698d85dd96761c}} 
+\index{child.h@{child.h}!CreateNewMatrix@{CreateNewMatrix}}
+\index{CreateNewMatrix@{CreateNewMatrix}!child.h@{child.h}}
+\doxysubsubsection{\texorpdfstring{CreateNewMatrix()}{CreateNewMatrix()}}
+{\footnotesize\ttfamily void Create\+New\+Matrix (\begin{DoxyParamCaption}\item[{int $\ast$$\ast$}]{matrix,  }\item[{int $\ast$$\ast$}]{new\+\_\+matrix,  }\item[{int}]{size\+\_\+x,  }\item[{int}]{size\+\_\+y }\end{DoxyParamCaption})}
+
+
+
+Заполняет строки новой матрицы в порядке убывания суммы модулей их элементов 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em matrix} & исходная матрица \\
+\hline
+\mbox{\texttt{ out}}  & {\em new\+\_\+matrix} & новая матрица \\
+\hline
+\mbox{\texttt{ in}}  & {\em size\+\_\+x} & ширина матрицы \\
+\hline
+\mbox{\texttt{ in}}  & {\em size\+\_\+y} & высота матрицы \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{child_8h_afed89349e80f141b95df2dd60e0c2192}\label{child_8h_afed89349e80f141b95df2dd60e0c2192}} 
+\index{child.h@{child.h}!FindMaxId@{FindMaxId}}
+\index{FindMaxId@{FindMaxId}!child.h@{child.h}}
+\doxysubsubsection{\texorpdfstring{FindMaxId()}{FindMaxId()}}
+{\footnotesize\ttfamily void Find\+Max\+Id (\begin{DoxyParamCaption}\item[{int $\ast$}]{array,  }\item[{int}]{length,  }\item[{int $\ast$}]{ids }\end{DoxyParamCaption})}
+
+
+
+Вычисляет последовательность индексов строк, располагающую строки в порядке убывания 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em array} & массив сумм элементов строк \\
+\hline
+\mbox{\texttt{ in}}  & {\em length} & длина исходного массива \\
+\hline
+\mbox{\texttt{ out}}  & {\em ids} & вычисленный массив индексов \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{child_8h_a2f0dc1a3a812553bec9ad9683b8ef484}\label{child_8h_a2f0dc1a3a812553bec9ad9683b8ef484}} 
+\index{child.h@{child.h}!GetString@{GetString}}
+\index{GetString@{GetString}!child.h@{child.h}}
+\doxysubsubsection{\texorpdfstring{GetString()}{GetString()}}
+{\footnotesize\ttfamily char $\ast$ Get\+String (\begin{DoxyParamCaption}\item[{int $\ast$}]{len }\end{DoxyParamCaption})}
+
+
+
+Считывает строку произвольной длины из коноли 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em len} & полученная длина строки \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+считанная из консоли строка
+\end{DoxyReturn}
+Запускает дочерний поток программы \mbox{\Hypertarget{child_8h_a3a980838f6009ee9255fd9e3226a02fc}\label{child_8h_a3a980838f6009ee9255fd9e3226a02fc}} 
+\index{child.h@{child.h}!InputMatrix@{InputMatrix}}
+\index{InputMatrix@{InputMatrix}!child.h@{child.h}}
+\doxysubsubsection{\texorpdfstring{InputMatrix()}{InputMatrix()}}
+{\footnotesize\ttfamily int Input\+Matrix (\begin{DoxyParamCaption}\item[{int $\ast$$\ast$}]{matrix,  }\item[{int}]{size\+\_\+x,  }\item[{int}]{size\+\_\+y }\end{DoxyParamCaption})}
+
+
+
+Считывает из консоли значения элементов матрицы 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em matrix} & матрица считанных значений \\
+\hline
+\mbox{\texttt{ in}}  & {\em size\+\_\+x} & ширина матрицы \\
+\hline
+\mbox{\texttt{ in}}  & {\em size\+\_\+y} & высота матрицы \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+корректно ли прошло считывание 
+\end{DoxyReturn}
+\mbox{\Hypertarget{child_8h_a371b86d84af3868680310b814412466f}\label{child_8h_a371b86d84af3868680310b814412466f}} 
+\index{child.h@{child.h}!InputNumber@{InputNumber}}
+\index{InputNumber@{InputNumber}!child.h@{child.h}}
+\doxysubsubsection{\texorpdfstring{InputNumber()}{InputNumber()}}
+{\footnotesize\ttfamily int Input\+Number (\begin{DoxyParamCaption}\item[{int $\ast$}]{val }\end{DoxyParamCaption})}
+
+
+
+Считывает из консоли одно целое число 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em val} & считанное значение \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+код корректности считывания 
+\end{DoxyReturn}
+\mbox{\Hypertarget{child_8h_a0f22c8d8fba0326f6d57ae19515f1e94}\label{child_8h_a0f22c8d8fba0326f6d57ae19515f1e94}} 
+\index{child.h@{child.h}!InputSize@{InputSize}}
+\index{InputSize@{InputSize}!child.h@{child.h}}
+\doxysubsubsection{\texorpdfstring{InputSize()}{InputSize()}}
+{\footnotesize\ttfamily void Input\+Size (\begin{DoxyParamCaption}\item[{int $\ast$}]{size }\end{DoxyParamCaption})}
+
+
+
+Запрашивает у пользователя размер будущей матрицы 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em size} & считанный размер матрицы \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{child_8h_a0ddf1224851353fc92bfbff6f499fa97}\label{child_8h_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{child.h@{child.h}!main@{main}}
+\index{main@{main}!child.h@{child.h}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Запускает исполнение оновного функционала программы 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em argc} & передаваемый числовой код \\
+\hline
+\mbox{\texttt{ in}}  & {\em argv\mbox{[}$\,$\mbox{]}} & массив параметров коммандной строки \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+код завершения программы 
+\end{DoxyReturn}
+\mbox{\Hypertarget{child_8h_a87c58e25ad45017b58da2168adb27103}\label{child_8h_a87c58e25ad45017b58da2168adb27103}} 
+\index{child.h@{child.h}!PrintMatrix@{PrintMatrix}}
+\index{PrintMatrix@{PrintMatrix}!child.h@{child.h}}
+\doxysubsubsection{\texorpdfstring{PrintMatrix()}{PrintMatrix()}}
+{\footnotesize\ttfamily void Print\+Matrix (\begin{DoxyParamCaption}\item[{int $\ast$$\ast$}]{matrix,  }\item[{int}]{size\+\_\+x,  }\item[{int}]{size\+\_\+y }\end{DoxyParamCaption})}
+
+
+
+Вывод матрицы в консоль 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em matrix} & матрица для вывода \\
+\hline
+\mbox{\texttt{ in}}  & {\em size\+\_\+x} & ширина матрицы \\
+\hline
+\mbox{\texttt{ in}}  & {\em size\+\_\+y} & высота матрицы \\
+\hline
+\end{DoxyParams}
