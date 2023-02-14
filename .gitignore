@@ -68,3 +68,8 @@ About
 !docs/
 
 .idea/
+.vscode/
+*.json
+
+child
+main
