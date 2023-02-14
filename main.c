@@ -1,3 +1,5 @@
+/* Запускает родительский поток программы*/
+
 #include<stdio.h>
 #include<stdlib.h>
 #include <sys/types.h>

@@ -1,3 +1,5 @@
+/*! Запускает дочерний поток программы */
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -54,12 +56,15 @@ void PrintMatrix(int** matrix, int size_x, int size_y){
 \param[out] sum вычисленные суммы модулей
 */
 void CountModuleSum(int** matrix, int size_x, int size_y, int* sum){
+    printf("Modules summs: ");
     for(int i = 0; i < size_x; i++){
         sum[i] = 0;
         for(int j = 0; j < size_y; j++){
             sum[i] += abs(matrix[i][j]);
         }
+        printf("%d ", sum[i]);
     }
+    printf("\n");
 }
 
 /*!
@@ -95,11 +100,6 @@ void FindMaxId(int* array, int length, int* ids){
 void CreateNewMatrix(int** matrix, int** new_matrix, int size_x, int size_y){
     int sum[size_x];
     CountModuleSum(matrix, size_x, size_y, sum);
-    printf("Modules summs: ");
-    for(int i = 0; i < size_x; i++){
-        printf("%d ", sum[i]);
-    }
-    printf("\n");
     int ids[size_x];
     FindMaxId(sum, size_x, ids);
     for(int i = 0; i < size_x; i++){
