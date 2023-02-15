@@ -1,51 +1,6 @@
 #include <stdlib.h>
 #include <CUnit/Basic.h>
-
-
-void CountModuleSum(int** matrix, int size_x, int size_y, int* sum)
-{
-    printf("Modules summs: ");
-    for(int i = 0; i < size_x; i++)
-    {
-        sum[i] = 0;
-        for(int j = 0; j < size_y; j++)
-        {
-            sum[i] += abs(matrix[i][j]);
-        }
-        printf("%d ", sum[i]);
-    }
-    printf("\n");
-}
-
-void FindMaxId(int* array, int length, int* ids)
-{
-    for(int i = 0; i < length; i++){
-        int max = 0;
-        int id = 0;
-        for(int j = 0; j < length; j++)
-        {
-            if(array[j] > max)
-            {
-                max = array[j];
-                id = j;
-            }
-        }
-        ids[i] = id;
-        array[id] = 0;
-    }
-}
-
-void CreateNewMatrix(int** matrix, int** new_matrix, int size_x, int size_y)
-{
-    int sum[size_x];
-    CountModuleSum(matrix, size_x, size_y, sum);
-    int ids[size_x];
-    FindMaxId(sum, size_x, ids);
-    for(int i = 0; i < size_x; i++)
-    {
-        new_matrix[i] = matrix[ids[i]];
-    }
-}
+#include"matrix.c"
 
 int CompareMatrix(int** matrix_1, int** matrix_2, int size_x, int size_y)
 {
@@ -80,6 +35,7 @@ void Test1(){
     matrix[0][0] = 2;
     CreateNewMatrix(matrix, new_matrix, size[0], size[1]);
     CU_ASSERT_EQUAL(CompareMatrix(matrix, new_matrix, size[0], size[1]), 1);
+    FreeMatrix(matrix, size);
 }
 
 void Test2(){
@@ -103,6 +59,7 @@ void Test2(){
     correct[1][1] = -3;
     CreateNewMatrix(matrix, new_matrix, size[0], size[1]);
     CU_ASSERT_EQUAL(CompareMatrix(correct, new_matrix, size[0], size[1]), 1);
+    FreeMatrix(matrix, size);
 }
 
 void Test3(){
@@ -126,6 +83,7 @@ void Test3(){
     correct[1][1] = 3;
     CreateNewMatrix(matrix, new_matrix, size[0], size[1]);
     CU_ASSERT_EQUAL(CompareMatrix(correct, new_matrix, size[0], size[1]), 1);
+    FreeMatrix(matrix, size);
 }
 
 void Test4(){
@@ -154,6 +112,7 @@ void Test4(){
     correct[1][2] = 0;
     CreateNewMatrix(matrix, new_matrix, size[0], size[1]);
     CU_ASSERT_EQUAL(CompareMatrix(correct, new_matrix, size[0], size[1]), 1);
+    FreeMatrix(matrix, size);
 }
 
 int main(){

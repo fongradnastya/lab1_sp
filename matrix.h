@@ -73,11 +73,3 @@ int InputNumber(int* val);
 \param[out] size считанный размер матрицы
 */
 void InputSize(int* size);
-
-/*!
-\brief Запускает исполнение оновного функционала программы
-\param[in] argc передаваемый числовой код
-\param[in] argv[] массив параметров коммандной строки
-\return код завершения программы
-*/ 
-int main(int argc, char* argv[]);
